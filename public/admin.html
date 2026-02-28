@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>Luxury Stay Admin</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="dashboard">
+
+    <h2>Booking Dashboard</h2>
+
+    <!-- SUMMARY CARDS -->
+    <div class="cards">
+        <div class="card">
+            <h3 id="totalBookings">0</h3>
+            <p>Total Bookings</p>
+        </div>
+
+        <div class="card approved">
+            <h3 id="approvedCount">0</h3>
+            <p>Approved</p>
+        </div>
+
+        <div class="card pending">
+            <h3 id="pendingCount">0</h3>
+            <p>Pending</p>
+        </div>
+    </div>
+
+    <!-- SMALL CHART -->
+    <div class="chart-box">
+        <canvas id="statusChart"></canvas>
+    </div>
+
+    <!-- SEARCH -->
+    <input type="text" id="search" placeholder="Search Room Type...">
+
+    <!-- TABLE -->
+    <table id="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Room</th>
+                <th>Mobile</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

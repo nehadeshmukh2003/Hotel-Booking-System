@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Luxury Stay Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2>Luxury Stay</h2>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="login.html">Admin</a></li>
+    </ul>
+</nav>
+
+<!-- HOTEL BANNER -->
+<section class="banner">
+    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
+</section>
+
+<!-- ROOMS SECTION -->
+<section class="rooms">
+    <h2>Available Rooms</h2>
+
+    <div class="room-card">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+        <h3>Single Room</h3>
+        <p>₹1000 / Night</p>
+        <button onclick="openForm('Single')">Book Now</button>
+    </div>
+
+    <div class="room-card">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa">
+        <h3>Double Room</h3>
+        <p>₹2000 / Night</p>
+        <button onclick="openForm('Double')">Book Now</button>
+    </div>
+
+    <div class="room-card">
+        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427">
+        <h3>Suite</h3>
+        <p>₹4000 / Night</p>
+        <button onclick="openForm('Suite')">Book Now</button>
+    </div>
+</section>
+
+<!-- POPUP BOOKING FORM -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+
+        <h2>Book Your Stay</h2>
+
+        <form id="bookingForm">
+            <input type="date" id="checkin" required>
+            <input type="date" id="checkout" required>
+
+            <select id="roomType" required>
+                <option value="">Select Room</option>
+                <option>Single</option>
+                <option>Double</option>
+                <option>Suite</option>
+            </select>
+
+            <input type="number" id="guests" placeholder="Guests" required>
+
+            <input type="tel" id="mobile"
+                   placeholder="Mobile Number"
+                   pattern="[0-9]{10}"
+                   required>
+
+            <textarea id="requests" placeholder="Special Requests"></textarea>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+
+        <p id="msg"></p>
+    </div>
+</div>
+
+<!-- FACILITIES AFTER SUCCESS -->
+<section id="facilities" class="facilities hidden">
+    <h2>Hotel Facilities</h2>
+
+    <div class="facility-images">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.uoxd5boAUalwvbjsGkKBzgHaEK?pid=Api&P=0&h=180">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+    </div>
+
+    <p>Free WiFi | Swimming Pool | Spa | Gym | 24/7 Service</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
