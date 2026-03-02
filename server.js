@@ -170,11 +170,28 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
+// const db = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "root", // change if needed
+//     database: "hotel_booking"
+// });
+
+
+// const db = mysql.createConnection({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME
+// });
+
+
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root", // change if needed
-    database: "hotel_booking"
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT
 });
 
 db.connect(err => {
