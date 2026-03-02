@@ -170,12 +170,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-// const db = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "root", // change if needed
-//     database: "hotel_booking"
-// });
+
 
 
 // const db = mysql.createConnection({
