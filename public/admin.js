@@ -1,72 +1,27 @@
-async function loadBookings() {
-    const response = await fetch("/bookings");
-    const data = await response.json();
+function loadBookings() {
 
-    const tbody = document.querySelector("#table tbody");
-    tbody.innerHTML = "";
+  const bookings = JSON.parse(localStorage.getItem("bookings")) || []
 
-    let approved = 0;
-    let pending = 0;
+  const table = document.getElementById("bookingTable")
 
-    data.forEach(row => {
+  let rows = ""
 
-        if(row.status === "Approved") approved++;
-        else pending++;
+  bookings.forEach(b => {
 
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td>${row.id}</td>
-            <td>${row.room_type}</td>
-            <td>${row.mobile}</td>
-            <td>${row.status}</td>
-            <td>
-                <button onclick="approve(${row.id})">Approve</button>
-                <button onclick="deleteBooking(${row.id})">Delete</button>
-            </td>
-        `;
-        tbody.appendChild(tr);
-    });
+    rows += `
+    <tr>
+    <td>${b.name}</td>
+    <td>${b.mobile}</td>
+    <td>${b.room}</td>
+    <td>${b.checkin}</td>
+    <td>${b.checkout}</td>
+    </tr>
+    `
 
-    document.getElementById("totalBookings").innerText = data.length;
-    document.getElementById("approvedCount").innerText = approved;
-    document.getElementById("pendingCount").innerText = pending;
+  })
 
-    loadChart(approved, pending);
+  table.innerHTML = rows
+
 }
 
-async function deleteBooking(id) {
-    await fetch(`/delete/${id}`, { method:"DELETE" });
-    loadBookings();
-}
-
-async function approve(id) {
-    await fetch(`/approve/${id}`, { method:"PUT" });
-    loadBookings();
-}
-
-function loadChart(approved, pending) {
-    new Chart(document.getElementById("statusChart"), {
-        type: 'doughnut',
-        data: {
-            labels: ['Approved', 'Pending'],
-            datasets: [{
-                data: [approved, pending]
-            }]
-        },
-        options: {
-            responsive: false
-        }
-    });
-}
-
-document.getElementById("search").addEventListener("keyup", function() {
-    const value = this.value.toLowerCase();
-    const rows = document.querySelectorAll("#table tbody tr");
-
-    rows.forEach(row => {
-        row.style.display = row.innerText.toLowerCase().includes(value)
-            ? "" : "none";
-    });
-});
-
-loadBookings();
+loadBookings()

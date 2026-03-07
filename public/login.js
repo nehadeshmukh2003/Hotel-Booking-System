@@ -1,42 +1,16 @@
-// async function login() {
-//     const username = document.getElementById("username").value;
-//     const password = document.getElementById("password").value;
+function login() {
 
-//     const response = await fetch("/login", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ username, password })
-//     });
+  const username = document.getElementById("username").value
+  const password = document.getElementById("password").value
 
-//     const result = await response.json();
+  if (username === "admin" && password === "admin123") {
 
-//     if (result.success) {
-//         window.location.href = "admin.html";
-//     } else {
-//         document.getElementById("msg").innerText = "Invalid Login";
-//     }
-// }
+    window.location.href = "admin.html"
 
+  } else {
 
+    alert("Invalid Login")
 
+  }
 
-
-
-
-async function login() {
-    const response = await fetch("/login", {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({
-            username: username.value,
-            password: password.value
-        })
-    });
-
-    const result = await response.json();
-
-    if(result.success)
-        window.location.href = "admin.html";
-    else
-        msg.innerText = "Invalid Login";
 }
