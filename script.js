@@ -1,17 +1,15 @@
-function openForm(roomType) {
+document.addEventListener("DOMContentLoaded", function() {
 
-  document.getElementById("bookingModal").style.display = "block";
-  document.getElementById("roomType").value = roomType;
+  window.openForm = function(roomType) {
+    document.getElementById("bookingModal").style.display = "block";
+    document.getElementById("roomType").value = roomType;
+  };
 
-}
+  window.closeForm = function() {
+    document.getElementById("bookingModal").style.display = "none";
+  };
 
-function closeForm() {
-
-  document.getElementById("bookingModal").style.display = "none";
-
-}
-
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  document.getElementById("bookingForm").addEventListener("submit", function(e) {
 
   e.preventDefault();
 
@@ -39,9 +37,10 @@ document.getElementById("bookingForm").addEventListener("submit", function(e) {
   bookings.push(booking);
 
   localStorage.setItem("bookings", JSON.stringify(bookings));
-
   alert("Booking Successful!");
 
   closeForm();
+
+  });
 
 });
