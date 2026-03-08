@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <nav class="navbar">
-    <h2>Luxury Stay Admin</h2>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Logout</a></li>
-    </ul>
+<h2>Luxury Stay Admin</h2>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="login.html">Logout</a></li>
+</ul>
 </nav>
 
 <div class="dashboard">
 
-    <h2>Booking Dashboard</h2>
+<h2>Booking Dashboard</h2>
 
-    <!-- SUMMARY CARDS -->
-    <div class="cards">
-        <div class="card">
-            <h3 id="totalBookings">0</h3>
-            <p>Total Bookings</p>
-        </div>
+<div class="cards">
 
-        <div class="card approved">
-            <h3 id="approvedCount">0</h3>
-            <p>Approved</p>
-        </div>
+<div class="card">
+<h3 id="totalBookings">0</h3>
+<p>Total Bookings</p>
+</div>
 
-        <div class="card pending">
-            <h3 id="pendingCount">0</h3>
-            <p>Pending</p>
-        </div>
-    </div>
+<div class="card approved">
+<h3 id="approvedCount">0</h3>
+<p>Approved</p>
+</div>
 
-    <!-- SMALL CHART -->
-    <div class="chart-box">
-        <canvas id="statusChart"></canvas>
-    </div>
+<div class="card pending">
+<h3 id="pendingCount">0</h3>
+<p>Pending</p>
+</div>
 
-    <!-- SEARCH -->
-    <input type="text" id="search" placeholder="Search Room Type...">
+</div>
 
-    <!-- TABLE -->
-    <table id="table">
-        <thead>
-            <tr>
-                <th>NAME</th>
-                <th>MOBILE NO.</th>
-                <th>STATUS</th>
-                <th>CHECK-IN</th>
-                <th>CHECK-OUT</th>
-            </tr>
-        </thead>
-        <tbody id="bookingTable"></tbody>
-    </table>
+<input type="text" id="search" placeholder="Search Room Type...">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Mobile</th>
+<th>Room</th>
+<th>Check-In</th>
+<th>Check-Out</th>
+<th>Status</th>
+<th>Approve</th>
+<th>Delete</th>
+</tr>
+
+</thead>
+
+<tbody id="bookingTable"></tbody>
+
+</table>
 
 </div>
 
 <script src="admin.js"></script>
+
 </body>
 </html>
