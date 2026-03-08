@@ -1,16 +1,43 @@
-document.addEventListener("DOMContentLoaded", function() {
+// Debug: Check if script is loading
+console.log("Script loaded successfully");
 
-  window.openForm = function(roomType) {
-    document.getElementById("bookingModal").style.display = "block";
-    document.getElementById("roomType").value = roomType;
-  };
+// Get modal element
+const modal = document.getElementById("bookingModal");
+const roomTypeSelect = document.getElementById("roomType");
 
-  window.closeForm = function() {
-    document.getElementById("bookingModal").style.display = "none";
-  };
+// Function to open modal
+function openForm(roomType) {
+  console.log("openForm called with:", roomType);
+  modal.style.display = "block";
+  roomTypeSelect.value = roomType;
+}
 
-  document.getElementById("bookingForm").addEventListener("submit", function(e) {
+// Function to close modal
+function closeForm() {
+  modal.style.display = "none";
+}
 
+// Make functions globally accessible
+window.openForm = openForm;
+window.closeForm = closeForm;
+
+// Add click events to all Book Now buttons
+document.querySelectorAll('.book-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    const roomType = this.getAttribute('data-room');
+    openForm(roomType);
+  });
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', function(e) {
+  if (e.target === modal) {
+    closeForm();
+  }
+});
+
+// Form submission
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const name = document.getElementById("name").value;
@@ -33,14 +60,11 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-
   bookings.push(booking);
-
   localStorage.setItem("bookings", JSON.stringify(bookings));
+  
   alert("Booking Successful!");
-
   closeForm();
-
-  });
-
+  document.getElementById("bookingForm").reset();
 });
+
