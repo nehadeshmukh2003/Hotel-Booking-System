@@ -1,15 +1,29 @@
-function bookRoom() {
+function openForm(roomType) {
 
-  const name = document.getElementById("name").value
-  const mobile = document.getElementById("mobile").value
-  // const room = document.getElementById("room").value
-  const room = document.getElementById("roomType").value
-  const checkin = document.getElementById("checkin").value
-  const checkout = document.getElementById("checkout").value
+  document.getElementById("bookingModal").style.display = "block";
+  document.getElementById("roomType").value = roomType;
+
+}
+
+function closeForm() {
+
+  document.getElementById("bookingModal").style.display = "none";
+
+}
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const mobile = document.getElementById("mobile").value;
+  const room = document.getElementById("roomType").value;
+  const checkin = document.getElementById("checkin").value;
+  const checkout = document.getElementById("checkout").value;
 
   if (!name || !mobile || !room) {
-    alert("Please fill all details")
-    return
+    alert("Please fill all details");
+    return;
   }
 
   const booking = {
@@ -18,31 +32,16 @@ function bookRoom() {
     room,
     checkin,
     checkout
-  }
+  };
 
+  let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
 
-function openForm(roomType) {
+  bookings.push(booking);
 
-  document.getElementById("bookingModal").style.display = "block"
+  localStorage.setItem("bookings", JSON.stringify(bookings));
 
-  document.getElementById("roomType").value = roomType
+  alert("Booking Successful!");
 
-}
+  closeForm();
 
-function closeForm() {
-
-  document.getElementById("bookingModal").style.display = "none"
-
-}
-
-
-
-  let bookings = JSON.parse(localStorage.getItem("bookings")) || []
-
-  bookings.push(booking)
-
-  localStorage.setItem("bookings", JSON.stringify(bookings))
-
-  alert("Booking Successful!")
-
-}
+});
